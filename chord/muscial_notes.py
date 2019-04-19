@@ -7,6 +7,6 @@ class MuscialNotes():
     def get_muscial_notes(self,freqs):
         notas = (12 * np.log2((freqs)/self.freq_fundamental))
         notas = np.int64(np.round(notas))
-        # notas = np.mod(notas,12)
+        notas = np.mod(notas,12)
 
         return notas
