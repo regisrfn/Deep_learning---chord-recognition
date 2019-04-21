@@ -16,7 +16,7 @@ for k = 1:5
         [pks,locs] = getFreqs(filename,1,tempofim);
         
         pks = pks/norm(pks);
-        %pksDecibels = mag2db(pks);
+        pksDecibels = mag2db(pks);
         
         [notasDoAudio,locs] = getNota(locs);
         
@@ -26,11 +26,11 @@ for k = 1:5
             
             indexNota = find(notasDoAudio == index,1);
             
-            %magnitudeDB = pksDecibels(indexNota);
+            magnitudeDB = pksDecibels(indexNota);
             magnitude = pks(indexNota);
             
             
-            acorde(index)= magnitude;
+            acorde(index)= magnitudeDB;
             
             
             
@@ -39,7 +39,7 @@ for k = 1:5
         
         %MUDAR ROTULO DO ACORDE
         acorde(13) =k-1;
-        dlmwrite('../dataset2_test.csv',acorde,'-append','precision','%0.6f');
+        dlmwrite('../chords.csv',acorde,'-append','precision','%0.6f');
         %dlmwrite('../dataset.csv',acorde,'-append')
         %acorde
         

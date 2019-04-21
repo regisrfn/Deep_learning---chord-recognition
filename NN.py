@@ -11,10 +11,10 @@ from sklearn.preprocessing import StandardScaler
 
 
 # Importing the dataset
-dataset = pd.read_csv('./dataset_test.csv')
+dataset = pd.read_csv('./chords.csv')
 x_train = dataset.iloc[:, 0:12].values
 y_train = dataset.iloc[:, 12].values
-dataset = pd.read_csv('./dataset.csv')
+dataset = pd.read_csv('./chords_test.csv')
 x_test = dataset.iloc[:, 0:12].values
 y_test = dataset.iloc[:, 12].values
 
@@ -35,15 +35,16 @@ print(f"Numero de classes = {num_classes}")
 num_inputs = x_test.shape[1]
 
 nn = classification.NeuralNetwork(x_train,y_train)
-nn.add_layer(size=50,input_size=num_inputs)
-nn.add_layer(size=10)
+nn.add_layer(size=1000,input_size=num_inputs)
+nn.add_layer(size=100)
+nn.add_layer(size=100)
 nn.add_layer(size=num_classes)
 
 
 epochs = 1000
 for epoch in range(epochs):
     nn.feedforward()
-    nn.backprop(learning_rate=0.5)
+    nn.backprop(learning_rate=0.01)
     print(f"epoch {epoch+1}/{epochs}")
     predicted_y = nn.predict(x_test)
     predicted_y = predicted_y.argmax(axis=1)
