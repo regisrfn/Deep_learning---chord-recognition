@@ -1,9 +1,11 @@
 import pandas as pd
-import dataframe_chord
+from dataframe_chord import DataFrame
 
-df = dataframe_chord.create_dataframe(test=True)
-df.to_csv('chords_test.csv',index=False)
+df = DataFrame(300,folder='./Dataset/Test/')
+test_df = df.create_dataframe()
+test_df.to_csv('chords_test.csv',index=False)
 
-df = dataframe_chord.create_dataframe(test=False)
-df.to_csv('chords.csv',index=False)
+# df = DataFrame(200,folder='./Dataset/Main/')
+# test_df = df.create_dataframe()
+# test_df.to_csv('chords.csv',index=False)
 

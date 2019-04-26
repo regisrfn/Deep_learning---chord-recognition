@@ -16,7 +16,7 @@ def classification_model(input_size):
     model = Sequential()
     model.add(Dense(50, activation='sigmoid', input_shape=(input_size,)))
     model.add(Dense(50, activation='sigmoid'))
-    model.add(Dense(num_classes, activation='sigmoid'))
+    model.add(Dense(num_classes, activation='softmax'))
 
     
     # compile model
@@ -53,7 +53,7 @@ num_inputs = x_test.shape[1]
 model = classification_model(num_inputs)
 
 # fit the model
-model.fit(x_train, y_train, validation_data=(x_test, y_test), epochs=100, verbose=2)
+model.fit(x_train, y_train, validation_data=(x_test, y_test), epochs=35, verbose=2)
 
 # evaluate the model
 scores = model.evaluate(x_test, y_test, verbose=0)
