@@ -10,7 +10,7 @@ class DataFrame:
     def __init__(self,size,folder):
         self.size =  size
         self.folder = folder
-        self.chords = ['c/c', 'd/d', 'dm/dm', 'e/e', 'g/g']
+        self.chords = ['c/c','d/d','dm/dm','e/e','g/g','a/a','am/am','bm/bm','em/em','f/f']
 
 
     def create_dataframe(self):
@@ -24,6 +24,7 @@ class DataFrame:
             for i in range(size):
                 audiofile = f'{folder}{chord_name}{i+1}.wav'
                 (freqs, Y, _, _) = fft_audio.fft(audiofile)
+                # print(audiofile)
                 Y = Y/Y.max()
                 Y = 20 * np.log10(Y)
                 index_peaks, _ = find_peaks(Y, distance=1)

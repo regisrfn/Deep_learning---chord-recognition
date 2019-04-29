@@ -7,8 +7,8 @@ import pandas as pd
 
 # Importing the dataset
 
-dataset = pd.read_csv('chords.csv')
-test = pd.read_csv('chords_test.csv')
+dataset = pd.read_csv('./dataset_csv/chords.csv')
+test = pd.read_csv('./dataset_csv/chords_test_violin.csv')
 X = dataset.iloc[:, 0:12].values
 y = dataset.iloc[:, 12].values
 
@@ -23,7 +23,7 @@ y_test = test.iloc[:, 12].values
 
 
 from sklearn.neighbors import KNeighborsClassifier
-classifier = KNeighborsClassifier(n_neighbors=50, metric='minkowski', p=2)
+classifier = KNeighborsClassifier(n_neighbors=20, metric='minkowski', p=2)
 classifier.fit(X, y)
 
 # Predicting the Test set result
