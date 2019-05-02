@@ -26,7 +26,7 @@ class DataFrame:
                 (freqs, Y, _, _) = fft_audio.fft(audiofile)
                 # print(audiofile)
                 Y = Y/Y.max()
-                Y = 20 * np.log10(Y)
+                # Y = 20 * np.log10(Y)
                 index_peaks, _ = find_peaks(Y, distance=1)
 
                 freqs = freqs[index_peaks]

@@ -16,12 +16,12 @@ def classification_model():
 
     # create model
     # load json and create model
-    json_file = open('new_model.json', 'r')
+    json_file = open('./saved_models/model99.33.json', 'r')
     loaded_model_json = json_file.read()
     json_file.close()
     model = model_from_json(loaded_model_json)
     # load weights into new model
-    model.load_weights("new_model.h5")
+    model.load_weights("./saved_models/model99.33.h5")
     print("Loaded model from disk")
 
     # compile model
@@ -44,11 +44,11 @@ Y_test = y_test
 # one hot encode outputs
 y_test = to_categorical(y_test)
 
-# # Feature Scaling
-# # sc = MinMaxScaler(feature_range=(-1, 1))
-# sc = StandardScaler()
-# x_train = sc.fit_transform(x_train)
-# x_test = sc.transform(x_test)
+# Feature Scaling
+# sc = MinMaxScaler(feature_range=(-1, 1))
+sc = StandardScaler()
+x_train = sc.fit_transform(x_train)
+x_test = sc.transform(x_test)
 
 num_classes = y_test.shape[1]
 print(f"Numero de classes = {num_classes}")

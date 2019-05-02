@@ -16,7 +16,7 @@ import matplotlib.pyplot as plt
 from keras.datasets import mnist
 
 # Importing the dataset
-dataset = pd.read_csv('./chords.csv')
+dataset = pd.read_csv('./dataset_csv/chords.csv')
 X = dataset.iloc[:, 0:12].values
 Y = dataset.iloc[:, 12].values
 
@@ -43,9 +43,9 @@ num_inputs = x_test.shape[1]
 def classification_model():
     # create model
     model = Sequential()
-    model.add(Dense(10, activation='sigmoid', input_shape=(num_inputs,)))
-    model.add(Dense(10, activation='sigmoid'))
-    model.add(Dense(num_classes, activation='sigmoid'))
+    model.add(Dense(50, activation='sigmoid', input_shape=(num_inputs,)))
+    model.add(Dense(50, activation='sigmoid'))
+    model.add(Dense(num_classes, activation='softmax'))
     
     
     # compile model

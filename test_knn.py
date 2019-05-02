@@ -8,7 +8,7 @@ import pandas as pd
 # Importing the dataset
 
 dataset = pd.read_csv('./dataset_csv/chords.csv')
-test = pd.read_csv('./dataset_csv/chords_test_violin.csv')
+test = pd.read_csv('./dataset_csv/chords_test.csv')
 X = dataset.iloc[:, 0:12].values
 y = dataset.iloc[:, 12].values
 
